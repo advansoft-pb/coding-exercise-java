@@ -6,11 +6,30 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
 
-	private static final String INPUT_NUMBER = "23491";
+	private final Calculator calculator = new CalculatorImpl(new ScannerImpl(), new ParserImpl(), new TranslatorImpl(),
+			new ProcessorImpl());
 
 	@Test
-	void testCalculate() throws Exception {
-		int result = Calculator.calculate(INPUT_NUMBER);
-		assertEquals(INPUT_NUMBER, String.valueOf(result));
+	void testCalculateSingleNumber() throws Exception {
+		int result = calculator.calculate("23491");
+		assertEquals(23491, result);
+	}
+
+	@Test
+	void testCalculateExpression() throws Exception {
+		int result = calculator.calculate("2+3");
+		assertEquals(5, result);
+	}
+
+	@Test
+	void testCalculateExpressionInParentheses() throws Exception {
+		int result = calculator.calculate("(2+3)");
+		assertEquals(5, result);
+	}
+
+	@Test
+	void testCalculateExpressionComplicated() throws Exception {
+		int result = calculator.calculate("(2+3)*(4+(5*6))");
+		assertEquals(104, result);
 	}
 }

@@ -1,6 +1,11 @@
 package com.magicline.codingexercise.plain;
 
 import com.magicline.codingexercise.plain.calc.Calculator;
+import com.magicline.codingexercise.plain.calc.CalculatorImpl;
+import com.magicline.codingexercise.plain.calc.ParserImpl;
+import com.magicline.codingexercise.plain.calc.ProcessorImpl;
+import com.magicline.codingexercise.plain.calc.ScannerImpl;
+import com.magicline.codingexercise.plain.calc.TranslatorImpl;
 
 public class PlainJavaApp {
 
@@ -10,7 +15,10 @@ public class PlainJavaApp {
 				throw new Exception("There should be at least one argument");
 			}
 
-			int result = Calculator.calculate(args[0]);
+			Calculator calculator = new CalculatorImpl(new ScannerImpl(), new ParserImpl(), new TranslatorImpl(),
+					new ProcessorImpl());
+
+			int result = calculator.calculate(args[0]);
 
 			System.out.println(result);
 		} catch (Exception e) {
