@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-class CalculatorTest {
+class CalculatorImplTest {
 
 	private final Calculator calculator = new CalculatorImpl(new ScannerImpl(), new ParserImpl(), new TranslatorImpl(),
 			new ProcessorImpl());
@@ -30,6 +30,6 @@ class CalculatorTest {
 	@Test
 	void testCalculateExpressionComplicated() throws Exception {
 		int result = calculator.calculate("(2+3)*(4+(5*6))");
-		assertEquals(104, result);
+		assertEquals(44, result);
 	}
 }

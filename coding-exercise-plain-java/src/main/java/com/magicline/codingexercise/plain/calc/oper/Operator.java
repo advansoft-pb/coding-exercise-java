@@ -22,4 +22,6 @@ public abstract class Operator {
 	public abstract boolean mark(char c);
 
 	public abstract int calc(int a, int b);
+
+	public abstract int prior();
 }

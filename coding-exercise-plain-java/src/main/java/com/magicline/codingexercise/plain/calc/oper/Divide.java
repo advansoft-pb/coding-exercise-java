@@ -21,4 +21,9 @@ public class Divide extends Operator {
 	public int calc(int a, int b) {
 		return a / b;
 	}
+
+	@Override
+	public int prior() {
+		return 1;
+	}
 }
